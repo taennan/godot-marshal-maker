@@ -3,7 +3,7 @@ extends ASFileScout
 
 
 func get_filepaths() -> Array[String]:
-	var recursive_files := ASRecursiveFileScout.new(_root_dirpath, _ignored_dirpaths).get_filepaths()
+	var recursive_files := ASRecursiveFileScout.new(_root_dirpath, _ignored_paths).get_filepaths()
 	var marked_files := recursive_files.filter(_is_file_marked_for_auto_serde)
 	return marked_files
 

@@ -12,7 +12,7 @@ func test_it_gets_filepaths_recursively():
 		"0.2/1.1",
 		"0.2/1.3/2.0"
 	])
-	var actual := _get_actual()
+	var actual := _get_actual([])
 	_run_assertions(actual, expected)
 
 func test_it_ignores_specified_directories():
@@ -32,7 +32,7 @@ func test_it_ignores_specified_files():
 		"0.0",
 		"0.2/1.1",
 	])
-	var actual := _get_actual()
+	var actual := _get_actual(ignored)
 	_run_assertions(actual, expected)
 
 
@@ -51,7 +51,7 @@ func _dirnames_to_fullpaths(dirnames: Array[String]) -> Array[String]:
 		fullpaths.append(fullpath)
 	return fullpaths
 
-func _get_actual(ignored_paths: Array[String] = []) -> Array[String]:
+func _get_actual(ignored_paths: Array[String]) -> Array[String]:
 	return ASRecursiveFileScout.new(TEST_FILES_DIR, ignored_paths).get_filepaths()
 
 func _run_assertions(actual: Array[String], expected: Array[String]) -> void:
