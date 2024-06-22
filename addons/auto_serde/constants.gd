@@ -1,3 +1,0 @@
-class_name AS_CONSTS
-
-# Haha, nothing here yet...

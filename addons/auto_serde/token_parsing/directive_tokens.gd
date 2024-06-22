@@ -4,29 +4,25 @@ class_name ASDirectiveTokens
 var _text: String
 
 var _targets_outer := false
-var targets_outer: bool:
-	get: return _targets_outer
-
 var _all := false
-var all: bool:
-	get: return _all
-
 var _ignore := false
-var ignore: bool:
-	get: return _ignore
-
 var _default = null
-var default:
-	get: return _default
 
 var _error := false
-var error: bool:
-	get: return _error
 
 
 func _init(text: String):
 	_text = text
 	_update()
+
+
+func targets_outer() -> bool: return _targets_outer
+
+func all() -> bool: return _all
+
+func ignore() -> bool: return _ignore
+
+func default(): return _default
 
 
 func _update() -> void:
@@ -62,8 +58,8 @@ func _get_keyvals() -> Dictionary:
 	
 	for keyval_split in keyval_splits:
 		var splits := keyval_split.split("=", false , 2)
-		var key = ASArrayLib.get_at(splits, 0)
-		var value = ASArrayLib.get_at(splits, 1, "true")
+		var key = ASArrLib.get_at(splits, 0)
+		var value = ASArrLib.get_at(splits, 1, "true")
 		
 		result[key] = value
 	
