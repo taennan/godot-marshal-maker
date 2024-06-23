@@ -7,3 +7,5 @@ class_name _ASSaverTestSavedObject
 @export var pi := 3.14
 
 @export var tau: float = 6.28
+
+@export var other := _ASSaverTestOtherObject.new()

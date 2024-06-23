@@ -18,4 +18,5 @@ static func to_json(obj: _ASSaverTestSavedObject) -> Dictionary:
 	result["a"] = obj.a
 	result["pi"] = obj.pi
 	result["tau"] = obj.tau
+	result["other"] = _ASSaverTestOtherObjectSaver.to_json(obj.other)
 	return result

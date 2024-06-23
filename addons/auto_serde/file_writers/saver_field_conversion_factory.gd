@@ -18,7 +18,11 @@ func make() -> String:
 	if is_field_serde_object(): return _get_serde_conversion()
 	if is_field_serde_array():  return _get_serde_array_conversion()
 	
-	push_error("Couldn't decide how to convert field ", _field_data)
+	push_error(
+		"Couldn't decide how to convert field ", 
+		_field_data.field().name(), 
+		_field_data.field().type(),
+	)
 	return ""
 
 
@@ -29,14 +33,14 @@ func is_field_serde_array() -> bool:
 	return _field_data.field().is_array() and is_field_serde_object()
 
 func is_field_serde_object() -> bool:
-	return _context.has_object_of_type(_field_data.field().name())
+	return _context.has_object_of_type(_field_data.field().type())
 
 
 func _get_primitive_conversion() -> String:
 	return "\tresult[\"{name}\"] = obj.{name}\n".format(_formatting_data())
 
 func _get_serde_conversion() -> String:
-	return "\tresult[\"{name}\"] = {type}Saver.new(obj.{name}).to_json()".format(_formatting_data())
+	return "\tresult[\"{name}\"] = {type}Saver.to_json(obj.{name})".format(_formatting_data())
 
 func _get_serde_array_conversion() -> String:
 	return """

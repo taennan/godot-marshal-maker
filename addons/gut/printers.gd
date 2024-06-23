@@ -143,7 +143,7 @@ class ConsolePrinter:
 			_buffer += text
 
 # ------------------------------------------------------------------------------
-# Prints text to terminal, formats some words.
+# Logs text to terminal, formats some words.
 # ------------------------------------------------------------------------------
 class TerminalPrinter:
 	extends Printer

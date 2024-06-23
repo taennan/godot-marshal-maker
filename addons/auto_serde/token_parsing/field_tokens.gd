@@ -91,6 +91,10 @@ func _get_inferred_type() -> String:
 		return "float"
 	if _is_valid_string_type(text):
 		return "String"
+	
+	var object_type := _get_object_type_from_constructor(text)
+	if object_type:
+		return object_type
 		
 	push_error("Unknown type for value ", text)
 	return "Variant"
@@ -111,3 +115,7 @@ func _is_valid_string_type(text: String) -> bool:
 	var regex := RegEx.new()
 	regex.compile(r"""^r?('|")+.*('|")+""")
 	return regex.search(text) != null
+
+func _get_object_type_from_constructor(text: String) -> String:
+	var matches := ASStrLib.regex(r"^(\w+)\.new\(").search(text.strip_edges())
+	return matches.get_string(1) if matches else ""

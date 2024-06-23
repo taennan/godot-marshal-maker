@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Prints things, mostly.  Knows too much about gut.gd, but it's only supposed to
+# Logs things, mostly.  Knows too much about gut.gd, but it's only supposed to
 # work with gut.gd, so I'm fine with that.
 # ------------------------------------------------------------------------------
 # a _test_collector to use when one is not provided.

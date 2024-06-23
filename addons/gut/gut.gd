@@ -925,7 +925,7 @@ func get_elapsed_time():
 	return to_return
 
 # ------------------------------------------------------------------------------
-# Conditionally prints the text to the console/results variable based on the
+# Conditionally logs the text to the console/results variable based on the
 # current log level and what level is passed in.  Whenever currently in a test,
 # the text will be indented under the test.  It can be further indented if
 # desired.
