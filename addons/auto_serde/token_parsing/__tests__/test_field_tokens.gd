@@ -69,6 +69,3 @@ class TestTypeParsing:
 		func _init(t: String, v: String):
 			type = t
 			value = v
-
-#class TestValueParsing:
-#	extends GutTest

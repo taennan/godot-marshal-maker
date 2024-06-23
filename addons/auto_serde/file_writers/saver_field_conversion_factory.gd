@@ -11,7 +11,7 @@ func _init(field_data: ASObjectTokensFieldData, context: ASWriterContext):
 
 
 func make() -> String:
-	if _field_data.directive().ignore():
+	if _field_data.directive() and _field_data.directive().ignore():
 		return ""
 	
 	if is_field_primitive():    return _get_primitive_conversion()
@@ -33,15 +33,15 @@ func is_field_serde_object() -> bool:
 
 
 func _get_primitive_conversion() -> String:
-	return "\tresult[\"{name}\"] = _obj.{name}\n".format(_formatting_data())
+	return "\tresult[\"{name}\"] = obj.{name}\n".format(_formatting_data())
 
 func _get_serde_conversion() -> String:
-	return "\tresult[\"{name}\"] = {type}Saver.new(_obj.{name}).to_json()".format(_formatting_data())
+	return "\tresult[\"{name}\"] = {type}Saver.new(obj.{name}).to_json()".format(_formatting_data())
 
 func _get_serde_array_conversion() -> String:
 	return """
 	result[\"{name}\"] = []
-	for item in _obj.{name}:
+	for item in obj.{name}:
 		var saved_item := {type}Saver.new(item).to_json()
 		result[\"{name}\"].append(saved_item)
 """.format(_formatting_data())

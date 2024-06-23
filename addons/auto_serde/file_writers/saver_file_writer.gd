@@ -11,7 +11,7 @@ func _get_text() -> String:
 	var template := _get_template()
 	var to_json_impl := _get_to_json_impl()
 	return template.format({
-		"type": _obj_tokens.type,
+		"type": _obj_tokens.type(),
 		"to_json_impl": to_json_impl,
 	})
 
@@ -29,7 +29,6 @@ static func to_json_text(obj: {type}) -> String:
 	var json := {type}Saver.to_json(obj)
 	var text := JSON.stringify(json, "  ")
 	return text
-
 
 {to_json_impl}
 """
@@ -50,19 +49,24 @@ func _get_to_json_impl() -> String:
 		elif factory.is_field_serde_array():
 			serde_array_conversions += conversion_string
 	
-	return """
+	var impl := """
 static func to_json(obj: {type}) -> Dictionary:
 	var result := {}
-	
 {primitive_conversions}
-	
 {serde_conversions}
-	
 {serde_array_conversions}
-	
-	return result
-""".format({
+	return result"""\
+	.format({
+		"type": _obj_tokens.type(),
 		"primitive_conversions": primitive_conversions,
 		"serde_conversions": serde_conversions,
 		"serde_array_conversions": serde_array_conversions,
 	})
+	
+	var cleaned_impl := _clean_to_json_impl(impl)
+	return cleaned_impl
+
+func _clean_to_json_impl(text: String) -> String:
+	var empty_tabless_text := ASStrLib.regex(r"^\s*$").sub(text, "", true)
+	var empty_lineless_text := ASStrLib.regex(r"\n{2,}").sub(empty_tabless_text, "\n", true)
+	return empty_lineless_text

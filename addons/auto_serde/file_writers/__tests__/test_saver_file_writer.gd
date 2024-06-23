@@ -3,10 +3,10 @@ extends GutTest
 
 class TEST_FILE_PATHS:
 	const ROOT := "res://addons/auto_serde/file_writers/__tests__/saver_test_files/"
-	const SAVED_OBJECT := ROOT + "saved_object.txt"
-	const OTHER_OBJECT := ROOT + "other_object.txt"
+	const SAVED_OBJECT := ROOT + "saved_object.gd"
+	const OTHER_OBJECT := ROOT + "other_object.gd"
 	const OUTPUT := ROOT + "output.txt"
-	const EXPECTED := ROOT + "expected.txt"
+	const EXPECTED := ROOT + "expected.gd"
 
 
 func test_it_writes_to_file_correctly():
@@ -24,4 +24,8 @@ func test_it_writes_to_file_correctly():
 	
 	var expected := FileAccess.get_file_as_string(TEST_FILE_PATHS.EXPECTED)
 	var actual := FileAccess.get_file_as_string(TEST_FILE_PATHS.OUTPUT)
-	assert_eq(actual, expected)
+	var is_equal := actual == expected
+	assert_true(is_equal)
+	
+	if is_equal:
+		FileAccess.open(TEST_FILE_PATHS.OUTPUT, FileAccess.WRITE).store_string("")

@@ -24,6 +24,8 @@ func ignore() -> bool: return _ignore
 
 func default(): return _default
 
+func error() -> bool: return _error
+
 
 func _update() -> void:
 	if not _is_text_valid():

@@ -25,8 +25,26 @@ func error() -> bool: return _error
 
 
 func _update() -> void:
+	_update_type()
 	_update_directive()
 	_update_fields()
+
+
+func _update_type() -> void:
+	for line in _text.split("\n"):
+		var type_name = _get_type_name_from_line(line)
+		if type_name:
+			_type = type_name
+			return
+	
+	_error = true
+
+func _get_type_name_from_line(line: String) -> String:
+	var regex := RegEx.new()
+	regex.compile(r"^class_name\s+(\w+)")
+	var matches := regex.search(line.strip_edges())
+	var type_name := matches.get_string(1) if matches else ""
+	return type_name
 
 
 func _update_directive() -> void:
@@ -38,12 +56,15 @@ func _update_directive() -> void:
 	_directive = tokens
 
 func _get_object_directive_line() -> String:
-	var line := ASFileLineIterator.new(_text).find_line(_is_line_object_directive)
-	return line.unwrap_or("")
+	var lines := _text.split("\n")
+	for line in lines:
+		if _is_line_object_directive(line):
+			return line
+	return ""
 
 func _is_line_object_directive(line: String) -> bool:
 	var tokens := ASDirectiveTokens.new(line)
-	return not tokens.error and tokens.targets_outer
+	return not tokens.error() and tokens.targets_outer()
 
 
 func _update_fields() -> void:
@@ -65,10 +86,14 @@ func _update_fields() -> void:
 				var new_data := ASObjectTokensFieldData.new(field_directive, old_data.field())
 				ASArrLib.set_at(field_data, field_data.size() - 1, new_data)
 	
+	field_data.reverse()
 	_fields = field_data
 
 func _get_clean_text() -> String:
-	var text := ASFileLineIterator.new(_text).filter_lines(_is_line_pertaining_to_fields)
+	var text := ""
+	for line in _text.split("\n", false):
+		if _is_line_pertaining_to_fields(line):
+			text += line + "\n"
 	return text
 
 func _is_line_pertaining_to_fields(line: String) -> bool:
