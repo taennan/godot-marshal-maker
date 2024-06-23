@@ -11,10 +11,24 @@ config_version=5
 [application]
 
 config/name="AutoSerde"
-run/main_scene="res://addons/auto_serde/Main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+enabled=PackedStringArray("res://addons/auto_serde/plugin.cfg", "res://addons/gut/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://addons/auto_serde/file_readers/": "orange",
+"res://addons/auto_serde/file_scouts/": "yellow",
+"res://addons/auto_serde/file_writers/": "teal",
+"res://addons/auto_serde/token_parsing/": "purple",
+"res://addons/auto_serde/ui/": "green",
+"res://addons/auto_serde/utils/": "gray",
+"res://addons/auto_serde_tests/file_scouts/": "yellow",
+"res://addons/auto_serde_tests/file_writers/": "teal",
+"res://addons/auto_serde_tests/token_parsing/": "purple",
+"res://addons/auto_serde_tests/utils/": "gray"
+}

@@ -2,7 +2,7 @@ extends GutTest
 
 
 class TEST_FILES:
-	const ROOT     := "res://addons/auto_serde/file_scouts/__tests__/marked_file_scout_test_files/"
+	const ROOT     := "res://addons/auto_serde_tests/file_scouts/marked_file_scout_test_files/"
 	const MARKED   := ROOT + "marked"
 	const UNMARKED := ROOT + "unmarked"
 	const INVALID  := ROOT + "invalid"

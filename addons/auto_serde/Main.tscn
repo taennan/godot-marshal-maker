@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bs82iitdnydkg"]
-
-[ext_resource type="Script" path="res://addons/auto_serde/main.gd" id="1_1j7v1"]
-
-[node name="Main" type="Node2D"]
-script = ExtResource("1_1j7v1")

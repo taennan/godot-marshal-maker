@@ -1,7 +1,7 @@
 extends GutTest
 
 
-const TEST_FILES_DIR := "res://addons/auto_serde/file_scouts/__tests__/recursive_file_scout_test_files"
+const TEST_FILES_DIR := "res://addons/auto_serde_tests/file_scouts/recursive_file_scout_test_files/"
 
 
 func test_it_gets_filepaths_recursively():

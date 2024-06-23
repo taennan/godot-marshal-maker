@@ -2,7 +2,7 @@ extends GutTest
 
 
 class TEST_FILE_PATHS:
-	const ROOT := "res://addons/auto_serde/file_writers/__tests__/saver_test_files/"
+	const ROOT := "res://addons/auto_serde_tests/file_writers/saver_test_files/"
 	const SAVED_OBJECT := ROOT + "saved_object.gd"
 	const OTHER_OBJECT := ROOT + "other_object.gd"
 	const OUTPUT := ROOT + "output.txt"

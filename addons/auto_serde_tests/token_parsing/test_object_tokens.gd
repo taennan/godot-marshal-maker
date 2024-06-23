@@ -2,7 +2,7 @@ extends GutTest
 
 
 class TEST_FILE_PATHS:
-	const ROOT := "res://addons/auto_serde/token_parsing/__tests__/directive_tokens_test_files/"
+	const ROOT := "res://addons/auto_serde_tests/token_parsing/directive_tokens_test_files/"
 	const VALID := ROOT + "valid.gd"
 	const NO_DIRECTIVE := ROOT + "no_directive.gd"
 	const NO_CLASS_NAME := ROOT + "no_class_name.gd"

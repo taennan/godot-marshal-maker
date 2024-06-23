@@ -31,3 +31,8 @@ var included_var := '3BusyBees'
 @export var specified_serde_obj: _ASSaverTestOtherObject = null
 
 @export var specified_serde_array: Array[_ASSaverTestOtherObject] = []
+
+
+class _IgnoredInternalClass:
+
+	@export var field_a := "ignore-me!"

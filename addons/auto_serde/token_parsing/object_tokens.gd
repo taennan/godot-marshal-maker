@@ -104,7 +104,6 @@ func _is_line_field_directive(line: String) -> bool:
 	return not directive.error() and not directive.targets_outer()
 
 func _is_line_field(line: String) -> bool:
-	var text := line.strip_edges()
-	var is_export_var := text.begins_with("@export")
-	var is_var := text.begins_with("var ")
+	var is_export_var := line.begins_with("@export")
+	var is_var := line.begins_with("var ")
 	return is_var or is_export_var
