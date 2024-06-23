@@ -24,6 +24,12 @@ func type() -> String:
 func is_array() -> bool:
 	return _is_array
 
+func is_export() -> bool:
+	return _get_clean_text().begins_with("@export")
+
+func error() -> bool:
+	return _error
+
 
 func _update() -> void:
 	if not _is_text_variable() or _is_text_computed_property_or_class_or_function():
@@ -35,8 +41,7 @@ func _update() -> void:
 
 
 func _is_text_variable() -> bool:
-	var text := _get_clean_text()
-	return text.begins_with("@export") or text.begins_with("var ")
+	return is_export() or _get_clean_text().begins_with("var ")
 
 func _is_text_computed_property_or_class_or_function() -> bool:
 	return _get_clean_text().ends_with(":")
@@ -85,7 +90,7 @@ func _update_type_by_specified_type() -> void:
 # TODO: We need to be able to infer many many more types
 func _get_inferred_type() -> String:
 	var text := _get_value_text()
-	if text.is_valid_int() or text.is_valid_hex_number(true) or _is_valid_binary(text):
+	if _is_valid_int(text):
 		return "int"
 	if text.is_valid_float():
 		return "float"
@@ -104,6 +109,20 @@ func _get_value_text() -> String:
 	regex.compile(r"^(.*?)=\s*")
 	var text := regex.sub(_get_clean_text(), "")
 	return text
+
+func _is_valid_int(text: String) -> bool:
+	if "." in text:
+		return false
+	if (
+		text.is_valid_int() 
+		or text.is_valid_hex_number(true) 
+		or _is_valid_binary(text)
+	):
+		return true
+	
+	var matches := ASStrLib.regex(r"\d(\d|_)*").search(text)
+	var is_match := true if matches else false
+	return is_match
 
 func _is_valid_binary(text: String) -> bool:
 	var regex := RegEx.new()

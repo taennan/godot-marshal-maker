@@ -81,7 +81,7 @@ func _update_fields() -> void:
 		
 		elif _is_line_field_directive(line):
 			var old_data: ASObjectTokensFieldData = ASArrLib.back(field_data)
-			if old_data and not old_data.directive:
+			if old_data and not old_data.directive():
 				var field_directive := ASDirectiveTokens.new(line)
 				var new_data := ASObjectTokensFieldData.new(field_directive, old_data.field())
 				ASArrLib.set_at(field_data, field_data.size() - 1, new_data)
@@ -101,7 +101,7 @@ func _is_line_pertaining_to_fields(line: String) -> bool:
 
 func _is_line_field_directive(line: String) -> bool:
 	var directive := ASDirectiveTokens.new(line.strip_edges())
-	return not directive.error and not directive.targets_outer
+	return not directive.error() and not directive.targets_outer()
 
 func _is_line_field(line: String) -> bool:
 	var text := line.strip_edges()

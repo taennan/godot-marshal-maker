@@ -17,4 +17,4 @@ func _is_gdscript_file(filepath: String) -> bool:
 
 func _is_line_auto_serde_directive(line: String) -> bool:
 	var directive := ASDirectiveTokens.new(line)
-	return not directive.error and directive.targets_outer
+	return not directive.error() and directive.targets_outer()

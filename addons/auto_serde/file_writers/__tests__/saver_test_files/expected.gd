@@ -15,8 +15,19 @@ static func to_json_text(obj: _ASSaverTestSavedObject) -> String:
 
 static func to_json(obj: _ASSaverTestSavedObject) -> Dictionary:
 	var result := {}
-	result["a"] = obj.a
-	result["pi"] = obj.pi
-	result["tau"] = obj.tau
-	result["other"] = _ASSaverTestOtherObjectSaver.to_json(obj.other)
+	result["inferred_string"] = obj.inferred_string
+	result["inferred_float"] = obj.inferred_float
+	result["inferred_int"] = obj.inferred_int
+	result["inferred_binary"] = obj.inferred_binary
+	result["inferred_hex"] = obj.inferred_hex
+	result["specified_string"] = obj.specified_string
+	result["specified_float"] = obj.specified_float
+	result["specified_int"] = obj.specified_int
+	result["included_var"] = obj.included_var
+	result["inferred_serde_obj"] = _ASSaverTestOtherObjectSaver.to_json(obj.inferred_serde_obj)
+	result["specified_serde_obj"] = _ASSaverTestOtherObjectSaver.to_json(obj.specified_serde_obj)
+	result["specified_serde_array"] = []
+	for item in obj.specified_serde_array:
+		var saved_item := _ASSaverTestOtherObjectSaver.to_json(item)
+		result["specified_serde_array"].append(saved_item)
 	return result
