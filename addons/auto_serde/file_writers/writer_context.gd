@@ -5,6 +5,10 @@ var _objects: Array[ASObjectTokens] = []
 var _writable_types: Array[String] = []
 
 
+func auto_serde_version() -> String:
+	return "v0.0.0"
+
+
 func object_tokens() -> Array[ASObjectTokens]:
 	return _objects
 

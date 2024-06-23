@@ -1,5 +1,5 @@
 #![auto_serde]
-class_name _ASSaverTestSavedObject
+class_name _ASFileWriterTestSavedObject
 
 
 @export var inferred_string := r"Apple"
@@ -26,11 +26,11 @@ var ignored_var := 10
 #[auto_serde]
 var included_var := '3BusyBees'
 
-@export var inferred_serde_obj := _ASSaverTestOtherObject.new()
+@export var inferred_serde_obj := _ASFileWriterTestOtherObject.new()
 
-@export var specified_serde_obj: _ASSaverTestOtherObject = null
+@export var specified_serde_obj: _ASFileWriterTestOtherObject = null
 
-@export var specified_serde_array: Array[_ASSaverTestOtherObject] = []
+@export var specified_serde_array: Array[_ASFileWriterTestOtherObject] = []
 
 
 class _IgnoredInternalClass:
