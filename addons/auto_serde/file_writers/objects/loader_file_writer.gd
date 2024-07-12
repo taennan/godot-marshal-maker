@@ -20,6 +20,8 @@ static func from_json_text(text: String) -> {type}:
 static func from_json(json: Dictionary) -> {type}:
 	var obj := {type}.new()
 {primitive_conversions}
+{simple_conversions}
+{simple_array_conversions}
 {serde_conversions}
 {serde_array_conversions}
 	return obj

@@ -22,6 +22,8 @@ static func to_json_text(obj: {type}) -> String:
 static func to_json(obj: {type}) -> Dictionary:
 	var result := {}
 {primitive_conversions}
+{simple_conversions}
+{simple_array_conversions}
 {serde_conversions}
 {serde_array_conversions}
 	return result

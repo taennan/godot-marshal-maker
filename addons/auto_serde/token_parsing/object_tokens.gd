@@ -14,6 +14,11 @@ func _init(text: String):
 	_text = text
 	_update()
 
+static func from_file(filepath: String) -> ASObjectTokens:
+	var text := FileAccess.get_file_as_string(filepath)
+	var tokens := ASObjectTokens.new(text)
+	return tokens
+
 
 func type() -> String: return _type
 

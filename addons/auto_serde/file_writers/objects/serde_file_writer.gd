@@ -10,6 +10,8 @@ class _TemplateValues:
 	var type := ""
 	var auto_serde_version := ""
 	var primitive_conversions := ""
+	var simple_conversions := ""
+	var simple_array_conversions := ""
 	var serde_conversions := ""
 	var serde_array_conversions := ""
 	
@@ -18,6 +20,8 @@ class _TemplateValues:
 			"type": type,
 			"auto_serde_version": auto_serde_version,
 			"primitive_conversions": primitive_conversions,
+			"simple_conversions": simple_conversions,
+			"simple_array_conversions": simple_array_conversions,
 			"serde_conversions": serde_conversions,
 			"serde_array_conversions": serde_array_conversions,
 		}
@@ -57,6 +61,10 @@ func _get_template_values() -> _TemplateValues:
 		
 		if factory.is_field_primitive():
 			values.primitive_conversions += conversion_string
+		elif factory.is_field_simple():
+			values.simple_conversions += conversion_string
+		elif factory.is_field_simple_array():
+			values.simple_array_conversions += conversion_string
 		elif factory.is_field_serde_object():
 			values.serde_conversions += conversion_string
 		elif factory.is_field_serde_array():
