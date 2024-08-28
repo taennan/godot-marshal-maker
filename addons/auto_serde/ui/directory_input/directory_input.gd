@@ -1,3 +1,5 @@
+@tool
+
 ## ASDirectoryInput
 extends Control
 
@@ -16,4 +18,4 @@ func value() -> String:
 
 
 func _on_select_dir_button_pressed() -> void:
-	pass
+	_file_dialog.show()

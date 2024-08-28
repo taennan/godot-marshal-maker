@@ -106,7 +106,7 @@ func _get_load_with_prefix() -> String:
 	
 	if not load_with and is_field_simple():
 		var typename := _field_data.field().type()
-		return _get_simple_loader_fn_name_from_typename(typename)
+		return ASSimpleFieldDefaultConversionFactory.new(typename).loader()
 	
 	return load_with
 
@@ -116,18 +116,6 @@ func _get_save_with_prefix() -> String:
 	
 	if not save_with and is_field_simple():
 		var typename := _field_data.field().type()
-		return _get_simple_saver_fn_name_from_typename(typename)
+		return ASSimpleFieldDefaultConversionFactory.new(typename).saver()
 	
 	return save_with
-
-func _get_simple_loader_fn_name_from_typename(typename: String) -> String:
-	match typename:
-		AS_TYPES.VECTOR_2: return "ASConversions.vector2_from_dict"
-	push_warning("No simple loader configured for type '", typename, "'")
-	return ""
-
-func _get_simple_saver_fn_name_from_typename(typename: String) -> String:
-	match typename:
-		AS_TYPES.VECTOR_2: return "ASConversions.vector2_to_dict"
-	push_warning("No simple saver configured for type '", typename, "'")
-	return ""
