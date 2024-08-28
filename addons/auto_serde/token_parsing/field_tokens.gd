@@ -91,18 +91,22 @@ func _update_type_by_specified_type() -> void:
 func _get_inferred_type() -> String:
 	var text := _get_value_text()
 	if _is_valid_int(text):
-		return "int"
+		return AS_TYPES.INT
 	if text.is_valid_float():
-		return "float"
+		return AS_TYPES.FLOAT
 	if _is_valid_string_type(text):
-		return "String"
+		return AS_TYPES.STRING
 	
 	var object_type := _get_object_type_from_constructor(text)
 	if object_type:
 		return object_type
+	
+	var simple_type := _get_simple_type_from_declaration(text)
+	if simple_type:
+		return simple_type
 		
 	push_error("Unknown type for value ", text)
-	return "Variant"
+	return AS_TYPES.VARIANT
 
 func _get_value_text() -> String:
 	var regex := RegEx.new()
@@ -138,3 +142,8 @@ func _is_valid_string_type(text: String) -> bool:
 func _get_object_type_from_constructor(text: String) -> String:
 	var matches := ASStrLib.regex(r"^(\w+)\.new\(").search(text.strip_edges())
 	return matches.get_string(1) if matches else ""
+
+func _get_simple_type_from_declaration(text: String) -> String:
+	var matches := ASStrLib.regex(r"^(\w+)(\(|\.)").search(text.strip_edges())
+	var matched_type := matches.get_string(1) if matches else ""
+	return matched_type if matched_type in AS_TYPES.SIMPLE else ""

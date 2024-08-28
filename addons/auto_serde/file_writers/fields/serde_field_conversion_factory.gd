@@ -112,7 +112,7 @@ func _get_load_with_prefix() -> String:
 
 func _get_save_with_prefix() -> String:
 	var directive := _field_data.directive()
-	var save_with := directive.load_with() if directive else ""
+	var save_with := directive.save_with() if directive else ""
 	
 	if not save_with and is_field_simple():
 		var typename := _field_data.field().type()

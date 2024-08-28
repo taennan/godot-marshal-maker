@@ -6,7 +6,7 @@ var _ui: Control
 
 
 func _enter_tree():
-	_ui = preload("res://addons/auto_serde/ui/RootUI.tscn").instantiate()
+	_ui = preload("res://addons/auto_serde/ui/BottomPanelUI.tscn").instantiate()
 	
 	var button = add_control_to_bottom_panel(_ui, 'AutoSerde')
 	button.shortcut_in_tooltip = true

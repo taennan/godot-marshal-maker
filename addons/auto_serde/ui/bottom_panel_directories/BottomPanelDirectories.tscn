@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://i5e2q6ipb0cd"]
+
+[ext_resource type="Script" path="res://addons/auto_serde/ui/bottom_panel_directories/bottom_panel_directories.gd" id="1_ph1n5"]
+[ext_resource type="PackedScene" uid="uid://d0lxgptppmch2" path="res://addons/auto_serde/ui/directory_input/DirectoryInput.tscn" id="1_q5bgn"]
+
+[node name="BottomPanelDirectories" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_ph1n5")
+
+[node name="V" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="V0" type="VBoxContainer" parent="V"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="V/V0"]
+layout_mode = 2
+text = "Output Directory *"
+
+[node name="OutDirInput" parent="V/V0" instance=ExtResource("1_q5bgn")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="V1" type="VBoxContainer" parent="V"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="H" type="HBoxContainer" parent="V/V1"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="V/V1/H"]
+layout_mode = 2
+text = "Input Directories"
+
+[node name="AddDirButton" type="Button" parent="V/V1/H"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Add input directory field"
+text = " + "
+
+[node name="ClearEmptyDirButton" type="Button" parent="V/V1/H"]
+unique_name_in_owner = true
+layout_mode = 2
+text = " - "
+
+[node name="S" type="ScrollContainer" parent="V/V1"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="InDirsBox" type="VBoxContainer" parent="V/V1/S"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DirectoryInput" parent="V/V1/S/InDirsBox" instance=ExtResource("1_q5bgn")]
+layout_mode = 2
+
+[node name="S" type="Control" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2

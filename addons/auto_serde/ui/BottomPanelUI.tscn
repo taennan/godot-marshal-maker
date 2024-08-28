@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://c342hf1xce657"]
+
+[ext_resource type="Script" path="res://addons/auto_serde/ui/bottom_panel_ui.gd" id="1_brae8"]
+[ext_resource type="PackedScene" uid="uid://baavyckmj8egc" path="res://addons/auto_serde/ui/bottom_panel_actions/BottomPanelActions.tscn" id="2_w63lx"]
+[ext_resource type="PackedScene" uid="uid://i5e2q6ipb0cd" path="res://addons/auto_serde/ui/bottom_panel_directories/BottomPanelDirectories.tscn" id="3_h3boy"]
+[ext_resource type="PackedScene" uid="uid://hnbjb3f0du6q" path="res://addons/auto_serde/ui/bottom_panel_logs/BottomPanelLogs.tscn" id="4_vicyk"]
+
+[node name="BottomPanelUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_brae8")
+
+[node name="V" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BottomPanelActions" parent="V" instance=ExtResource("2_w63lx")]
+layout_mode = 2
+
+[node name="HSep" type="HSeparator" parent="V"]
+layout_mode = 2
+
+[node name="H" type="HBoxContainer" parent="V"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BottomPanelDirecotries" parent="V/H" instance=ExtResource("3_h3boy")]
+layout_mode = 2
+
+[node name="BottomPanelLogs" parent="V/H" instance=ExtResource("4_vicyk")]
+layout_mode = 2
