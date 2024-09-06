@@ -5,10 +5,16 @@ var _srcdir: String
 var _outdir: String
 var _temp_outdir := ""
 
+var _save_to_text_files := false
+
 
 func _init(srcdir: String, outdir: String):
 	_srcdir = srcdir
 	_outdir = outdir
+
+
+func set_save_to_text_files(new_value: bool) -> void:
+	_save_to_text_files = new_value
 
 
 func go() -> void:
@@ -46,9 +52,7 @@ func _get_writer_context() -> ASWriterContext:
 	var marked_files := ASMarkedFileScout.new(_srcdir).get_filepaths()
 	
 	for file in marked_files:
-		var text := FileAccess.get_file_as_string(file)
-		var object_tokens := ASObjectTokens.new(text)
-		
+		var object_tokens := ASObjectTokens.from_file(file)
 		if not object_tokens.error():
 			context.add_object_tokens(object_tokens)
 	
@@ -56,12 +60,15 @@ func _get_writer_context() -> ASWriterContext:
 
 func _write_savers(context: ASWriterContext) -> void:
 	for object_tokens in context.object_tokens():
-		var filepath := ASPathLib.join(_outdir, object_tokens.type() + "Saver.gd")
+		var filepath := ASPathLib.join(_outdir, object_tokens.type() + "Saver" + _file_suffix())
 		var writer := ASSaverFileWriter.new(filepath, object_tokens, context)
 		writer.write()
 
+func _file_suffix() -> String:
+	return ".gd" if not _save_to_text_files else ".txt"
+
 func _write_loaders(context: ASWriterContext) -> void:
 	for object_tokens in context.object_tokens():
-		var filepath := ASPathLib.join(_outdir, object_tokens.type() + "Loader.gd")
+		var filepath := ASPathLib.join(_outdir, object_tokens.type() + "Loader" + _file_suffix())
 		var writer := ASLoaderFileWriter.new(filepath, object_tokens, context)
 		writer.write()

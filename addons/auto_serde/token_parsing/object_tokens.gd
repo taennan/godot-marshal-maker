@@ -10,23 +10,27 @@ var _fields: Array[ASObjectTokensFieldData]
 var _error := false
 
 
-func _init(text: String):
-	_text = text
-	_update()
-
 static func from_file(filepath: String) -> ASObjectTokens:
 	var text := FileAccess.get_file_as_string(filepath)
 	var tokens := ASObjectTokens.new(text)
 	return tokens
 
+func _init(text: String):
+	_text = text
+	_update()
 
-func type() -> String: return _type
 
-func directive() -> ASDirectiveTokens: return _directive
+func type() -> String: 
+	return _type
 
-func fields() -> Array[ASObjectTokensFieldData]: return _fields
+func directive() -> ASDirectiveTokens: 
+	return _directive
 
-func error() -> bool: return _error
+func fields() -> Array[ASObjectTokensFieldData]: 
+	return _fields
+
+func error() -> bool: 
+	return _error
 
 
 func _update() -> void:
@@ -41,7 +45,6 @@ func _update_type() -> void:
 		if type_name:
 			_type = type_name
 			return
-	
 	_error = true
 
 func _get_type_name_from_line(line: String) -> String:
@@ -55,7 +58,7 @@ func _get_type_name_from_line(line: String) -> String:
 func _update_directive() -> void:
 	var line := _get_object_directive_line()
 	var tokens := ASDirectiveTokens.new(line)
-	if tokens.error:
+	if tokens.error():
 		_error = true
 		return
 	_directive = tokens

@@ -16,3 +16,13 @@ const COLOR := "Color"
 
 const PRIMITIVE := [INT, FLOAT, BOOL, STRING]
 const SIMPLE := [VECTOR_2, VECTOR_2I, VECTOR_3, VECTOR_3I, COLOR]
+
+# TODO: Add all the builtin resource types
+const RESOURCE := [
+	"Animation",
+	"AnimationLibrary",
+	"AudioStreamMP3",
+	"AudioStreamWAV",
+	"Texture2D",
+	"Theme",
+]

@@ -48,3 +48,10 @@ static func vector3_from_array(array: Array[float]) -> Vector3:
 
 static func vector3_to_array(vector: Vector3) -> Array[float]:
 	return [vector.x, vector.y, vector.z]
+
+
+static func resource_to_string(resource: Resource) -> String:
+	return resource.resource_path
+
+static func resource_from_string(resource_path: String) -> Resource:
+	return load(resource_path)
