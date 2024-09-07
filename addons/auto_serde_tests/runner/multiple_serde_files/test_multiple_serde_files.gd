@@ -9,10 +9,10 @@ func test_writes_multiple_serde_file_loaders_and_savers():
 	runner.set_save_to_text_files(true)
 	runner.go()
 	
-	_assert_files_equal("_ASRunnerTestMultipleSerdeFilesChildObjectLoader.txt", "child_loader.gd")
-	_assert_files_equal("_ASRunnerTestMultipleSerdeFilesChildObjectSaver.txt", "child_saver.gd")
-	_assert_files_equal("_ASRunnerTestMultipleSerdeFilesParentObjectLoader.txt", "parent_loader.gd")
-	_assert_files_equal("_ASRunnerTestMultipleSerdeFilesParentObjectSaver.txt", "parent_saver.gd")
+	_assert_files_equal("_as_runner_test_multiple_serde_files_child_object_loader.txt", "child_loader.gd")
+	_assert_files_equal("_as_runner_test_multiple_serde_files_child_object_saver.txt", "child_saver.gd")
+	_assert_files_equal("_as_runner_test_multiple_serde_files_parent_object_loader.txt", "parent_loader.gd")
+	_assert_files_equal("_as_runner_test_multiple_serde_files_parent_object_saver.txt", "parent_saver.gd")
 
 func _assert_files_equal(actual_filename: String, expected_filename: String) -> void:
 	var actual_root_dir := "res://addons/auto_serde_tests/runner/multiple_serde_files/actual/"

@@ -60,15 +60,20 @@ func _get_writer_context() -> ASWriterContext:
 
 func _write_savers(context: ASWriterContext) -> void:
 	for object_tokens in context.object_tokens():
-		var filepath := ASPathLib.join(_outdir, object_tokens.type() + "Saver" + _file_suffix())
+		var filepath := _file_save_path(object_tokens, false)
 		var writer := ASSaverFileWriter.new(filepath, object_tokens, context)
 		writer.write()
 
-func _file_suffix() -> String:
-	return ".gd" if not _save_to_text_files else ".txt"
+func _file_save_path(object_tokens: ASObjectTokens, loader: bool) -> String:
+	var suffix := ".gd" if not _save_to_text_files else ".txt"
+	var object_type := "_loader" if loader else "_saver"
+	var object_name := ASCaseChange.snake(object_tokens.type())
+	
+	var save_path := ASPathLib.join(_outdir, object_name + object_type + suffix)
+	return save_path
 
 func _write_loaders(context: ASWriterContext) -> void:
 	for object_tokens in context.object_tokens():
-		var filepath := ASPathLib.join(_outdir, object_tokens.type() + "Loader" + _file_suffix())
+		var filepath := _file_save_path(object_tokens, true)
 		var writer := ASLoaderFileWriter.new(filepath, object_tokens, context)
 		writer.write()
