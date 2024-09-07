@@ -13,7 +13,7 @@ signal output_directory_changed(new_value: String)
 
 
 
-func update_from_config(config: AutoSerdConfig) -> void:
+func update_from_config(config: AutoSerdeConfig) -> void:
 	_in_dir_input.set_value(config.input_directory)
 	_out_dir_input.set_value(config.output_directory)
 

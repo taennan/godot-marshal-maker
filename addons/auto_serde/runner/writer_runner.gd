@@ -1,6 +1,13 @@
 class_name ASWriterRunner
 
 
+signal created_temp_outdir
+signal marked_file_found(filepath: String)
+signal saver_written(typename: String)
+signal loader_written(typename: String)
+signal deleted_temp_outdir
+
+
 var _srcdir: String
 var _outdir: String
 var _temp_outdir := ""
@@ -34,10 +41,12 @@ func _rename_old_outdir() -> void:
 	_temp_outdir = ASPathLib.join(parent, temp_name)
 	
 	DirAccess.rename_absolute(_outdir, _temp_outdir)
+	created_temp_outdir.emit()
 
 func _delete_temp_outdir() -> void:
 	OS.move_to_trash(_temp_outdir)
 	_temp_outdir = ""
+	deleted_temp_outdir.emit()
 
 
 func _write_new_outdir() -> void:
@@ -55,6 +64,7 @@ func _get_writer_context() -> ASWriterContext:
 		var object_tokens := ASObjectTokens.from_file(file)
 		if not object_tokens.error():
 			context.add_object_tokens(object_tokens)
+			marked_file_found.emit(file)
 	
 	return context
 
@@ -63,6 +73,8 @@ func _write_savers(context: ASWriterContext) -> void:
 		var filepath := _file_save_path(object_tokens, false)
 		var writer := ASSaverFileWriter.new(filepath, object_tokens, context)
 		writer.write()
+		
+		saver_written.emit(object_tokens.type())
 
 func _file_save_path(object_tokens: ASObjectTokens, loader: bool) -> String:
 	var suffix := ".gd" if not _save_to_text_files else ".txt"
@@ -77,3 +89,5 @@ func _write_loaders(context: ASWriterContext) -> void:
 		var filepath := _file_save_path(object_tokens, true)
 		var writer := ASLoaderFileWriter.new(filepath, object_tokens, context)
 		writer.write()
+		
+		loader_written.emit(object_tokens.type())

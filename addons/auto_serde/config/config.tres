@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="AutoSerdConfig" load_steps=2 format=3 uid="uid://b2hniolfv7b4u"]
+[gd_resource type="Resource" script_class="AutoSerdeConfig" load_steps=2 format=3 uid="uid://b2hniolfv7b4u"]
 
 [ext_resource type="Script" path="res://addons/auto_serde/config/config.gd" id="1_kofln"]
 
 [resource]
 script = ExtResource("1_kofln")
-input_directory = ""
-output_directory = "res://addons"
+input_directory = "res://addons/auto_serde_tests/runner/multiple_serde_files"
+output_directory = "res://addons/auto_serde_output"
 ignored_paths = Array[String]([])
