@@ -20,7 +20,8 @@ layout_mode = 2
 text = "Copy"
 
 [node name="CopyTimer" type="Timer" parent="H/CopyButton"]
-wait_time = 0.4
+unique_name_in_owner = true
+wait_time = 0.8
 
 [node name="ClearButton" type="Button" parent="H"]
 unique_name_in_owner = true

@@ -43,3 +43,6 @@ layout_mode = 2
 [node name="S" type="Control" parent="."]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+
+[connection signal="value_changed" from="V/V0/OutDirInput" to="." method="_on_out_dir_input_value_changed"]
+[connection signal="value_changed" from="V/V1/InDirInput" to="." method="_on_in_dir_input_value_changed"]

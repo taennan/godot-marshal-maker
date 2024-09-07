@@ -22,7 +22,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BottomPanelActions" parent="V" instance=ExtResource("2_w63lx")]
+[node name="Actions" parent="V" instance=ExtResource("2_w63lx")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="HSep" type="HSeparator" parent="V"]
@@ -32,8 +33,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="BottomPanelDirecotries" parent="V/H" instance=ExtResource("3_h3boy")]
+[node name="Directories" parent="V/H" instance=ExtResource("3_h3boy")]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="BottomPanelLogs" parent="V/H" instance=ExtResource("4_vicyk")]
+[node name="Logs" parent="V/H" instance=ExtResource("4_vicyk")]
+unique_name_in_owner = true
 layout_mode = 2
+
+[connection signal="generate" from="V/Actions" to="." method="_on_actions_generate"]
+[connection signal="input_directory_changed" from="V/H/Directories" to="." method="_on_directories_input_directory_changed"]
+[connection signal="output_directory_changed" from="V/H/Directories" to="." method="_on_directories_output_directory_changed"]
