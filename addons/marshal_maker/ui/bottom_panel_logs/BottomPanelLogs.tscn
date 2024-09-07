@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://hnbjb3f0du6q"]
+
+[ext_resource type="Script" path="res://addons/marshal_maker/ui/bottom_panel_logs/bottom_panel_logs.gd" id="1_jmwar"]
+
+[node name="BottomPanelLogs" type="VBoxContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_jmwar")
+
+[node name="H" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="H"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Logs"
+
+[node name="CopyButton" type="Button" parent="H"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Copy"
+
+[node name="CopyTimer" type="Timer" parent="H/CopyButton"]
+unique_name_in_owner = true
+wait_time = 0.8
+
+[node name="ClearButton" type="Button" parent="H"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Clear"
+
+[node name="Logs" type="TextEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+editable = false
+
+[connection signal="pressed" from="H/CopyButton" to="." method="_on_copy_button_pressed"]
+[connection signal="timeout" from="H/CopyButton/CopyTimer" to="." method="_on_copy_timer_timeout"]
+[connection signal="pressed" from="H/ClearButton" to="." method="_on_clear_button_pressed"]

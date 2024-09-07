@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MarshalMakerConfig" load_steps=2 format=3 uid="uid://b2hniolfv7b4u"]
+
+[ext_resource type="Script" path="res://addons/marshal_maker/config/config.gd" id="1_kofln"]
+
+[resource]
+script = ExtResource("1_kofln")
+input_directory = ""
+output_directory = ""
+ignored_paths = Array[String]([])

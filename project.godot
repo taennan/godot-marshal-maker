@@ -10,27 +10,27 @@ config_version=5
 
 [application]
 
-config/name="AutoSerde"
+config/name="MarshalMaker"
 config/tags=PackedStringArray("project")
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/auto_serde/plugin.cfg", "res://addons/gut/plugin.cfg")
+enabled=PackedStringArray("res://addons/marshal_maker/plugin.cfg", "res://addons/gut/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
-"res://addons/auto_serde/file_scouts/": "yellow",
-"res://addons/auto_serde/file_writers/": "red",
-"res://addons/auto_serde/runner/": "blue",
-"res://addons/auto_serde/token_parsing/": "purple",
-"res://addons/auto_serde/ui/": "green",
-"res://addons/auto_serde/utils/": "gray",
-"res://addons/auto_serde_tests/file_scouts/": "yellow",
-"res://addons/auto_serde_tests/file_writers/": "red",
-"res://addons/auto_serde_tests/runner/": "blue",
-"res://addons/auto_serde_tests/token_parsing/": "purple",
-"res://addons/auto_serde_tests/utils/": "gray"
+"res://addons/marshal_maker/file_scouts/": "yellow",
+"res://addons/marshal_maker/file_writers/": "red",
+"res://addons/marshal_maker/runner/": "blue",
+"res://addons/marshal_maker/token_parsing/": "purple",
+"res://addons/marshal_maker/ui/": "green",
+"res://addons/marshal_maker/utils/": "gray",
+"res://addons/marshal_maker_tests/file_scouts/": "yellow",
+"res://addons/marshal_maker_tests/file_writers/": "red",
+"res://addons/marshal_maker_tests/runner/": "blue",
+"res://addons/marshal_maker_tests/token_parsing/": "purple",
+"res://addons/marshal_maker_tests/utils/": "gray"
 }
