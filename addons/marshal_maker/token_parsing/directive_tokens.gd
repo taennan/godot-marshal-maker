@@ -70,12 +70,12 @@ func _get_clean_text() -> String:
 	var assignment_padding_regex := RegEx.new()
 	assignment_padding_regex.compile(r"\s+=\s+")
 	
-	var result := extra_space_regex.sub(_text, " ", true)
-	result = assignment_padding_regex.sub(result, "=", true)
-	return result
+	var MMResult := extra_space_regex.sub(_text, " ", true)
+	MMResult = assignment_padding_regex.sub(MMResult, "=", true)
+	return MMResult
 
 func _get_keyvals() -> Dictionary:
-	var result := {}
+	var MMResult := {}
 	var keyval_splits := _get_keyval_text().split(" ", false)
 	
 	for keyval_split in keyval_splits:
@@ -83,9 +83,9 @@ func _get_keyvals() -> Dictionary:
 		var key = MMArrLib.get_at(splits, 0)
 		var value = MMArrLib.get_at(splits, 1, "")
 		
-		result[key] = value
+		MMResult[key] = value
 	
-	return result
+	return MMResult
 
 func _get_keyval_text() -> String:
 	var text := _get_clean_text()
@@ -93,18 +93,18 @@ func _get_keyval_text() -> String:
 	var end_stripped := MMStrLib.regex(r"\s*\]\s*$").sub(start_stripped, "")
 	return end_stripped
 
-func _get_bool_param(keyvals: Dictionary, key: String) -> Option:
+func _get_bool_param(keyvals: Dictionary, key: String) -> MMOption:
 	if not keyvals.has(key):
-		return Option.none()
+		return MMOption.none()
 	
 	var param = keyvals.get(key)
 	match param:
-		"":      return Option.some(true)
-		"true":  return Option.some(true)
-		"false": return Option.some(false)
+		"":      return MMOption.some(true)
+		"true":  return MMOption.some(true)
+		"false": return MMOption.some(false)
 		_:
 			push_error("Unknown bool param ", param)
-			return Option.none()
+			return MMOption.none()
 
 func _get_string_param(keyvals: Dictionary, key: String) -> String:
 	var value: String = keyvals.get(key, "")

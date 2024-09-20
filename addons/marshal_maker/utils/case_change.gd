@@ -19,7 +19,7 @@ static func _title(string: String, amount: int) -> String:
 	var snaked := snake(string)
 	var splits := snaked.split("_")
 	
-	var result := ""
+	var MMResult := ""
 	for index in splits.size():
 		var split := splits[index]
 		if not split:
@@ -28,13 +28,13 @@ static func _title(string: String, amount: int) -> String:
 		if amount < 0 or index < amount:
 			split[0] = split[0].to_upper()
 		
-		result += split
+		MMResult += split
 		
 		var is_last := index == splits.size() - 1
 		if not is_last:
-			result += " "
+			MMResult += " "
 	
-	return result
+	return MMResult
 
 
 static func snake(string: String) -> String:

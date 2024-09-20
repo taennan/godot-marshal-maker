@@ -14,6 +14,6 @@ static func to_json_text(obj: _MMFileWriterTestIgnoreIncludeObject) -> String:
 
 
 static func to_json(obj: _MMFileWriterTestIgnoreIncludeObject) -> Dictionary:
-	var result := {}
-	result["included_var"] = obj.included_var
-	return result
+	var MMResult := {}
+	MMResult["included_var"] = obj.included_var
+	return MMResult

@@ -1,11 +1,11 @@
-class_name Option
+class_name MMOption
 
 
-static func some(value) -> Option:
-	return Option.new(value, true)
+static func some(value) -> MMOption:
+	return MMOption.new(value, true)
 
-static func none() -> Option:
-	return Option.new(null, false)
+static func none() -> MMOption:
+	return MMOption.new(null, false)
 
 
 var _value = null

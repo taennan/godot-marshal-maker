@@ -81,7 +81,7 @@ func _formatting_data() -> Dictionary:
 	var has_custom_saver := save_with.strip_edges() != ""
 	var has_custom_loader := load_with.strip_edges() != ""
 	
-	var result := {
+	var MMResult := {
 		"name": _field_data.field().name(),
 		"type": _field_data.field().type(),
 		"saved_name": _saved_name(),
@@ -90,7 +90,7 @@ func _formatting_data() -> Dictionary:
 		"load_with_prefix": load_with + "(" if has_custom_loader else "",
 		"load_with_suffix": ")" if has_custom_loader else "",
 	}
-	return result
+	return MMResult
 
 func _saved_name() -> String:
 	var directive := _field_data.directive()

@@ -14,11 +14,11 @@ static func to_json_text(obj: _MMFileWriterTestParentObject) -> String:
 
 
 static func to_json(obj: _MMFileWriterTestParentObject) -> Dictionary:
-	var result := {}
-	result["inferred_serde_obj"] = _MMFileWriterTestOtherObjectSaver.to_json(obj.inferred_serde_obj)
-	result["specified_serde_obj"] = _MMFileWriterTestOtherObjectSaver.to_json(obj.specified_serde_obj)
-	result["specified_serde_array"] = []
+	var MMResult := {}
+	MMResult["inferred_serde_obj"] = _MMFileWriterTestOtherObjectSaver.to_json(obj.inferred_serde_obj)
+	MMResult["specified_serde_obj"] = _MMFileWriterTestOtherObjectSaver.to_json(obj.specified_serde_obj)
+	MMResult["specified_serde_array"] = []
 	for item in obj.specified_serde_array:
 		var saved_item := _MMFileWriterTestOtherObjectSaver.to_json(item)
-		result["specified_serde_array"].append(saved_item)
-	return result
+		MMResult["specified_serde_array"].append(saved_item)
+	return MMResult

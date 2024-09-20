@@ -14,6 +14,6 @@ static func to_json_text(obj: _MMRunnerTestMultipleSerdeFilesParentObject) -> St
 
 
 static func to_json(obj: _MMRunnerTestMultipleSerdeFilesParentObject) -> Dictionary:
-	var result := {}
-	result["child"] = _MMRunnerTestMultipleSerdeFilesChildObjectSaver.to_json(obj.child)
-	return result
+	var MMResult := {}
+	MMResult["child"] = _MMRunnerTestMultipleSerdeFilesChildObjectSaver.to_json(obj.child)
+	return MMResult

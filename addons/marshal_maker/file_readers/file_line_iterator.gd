@@ -49,14 +49,14 @@ func has_line(fn: Callable) -> bool:
 		
 	return false
 
-func find_line(fn: Callable) -> Option:
+func find_line(fn: Callable) -> MMOption:
 	var iterator := _Iterator.new(_filepath)
 	while not iterator.is_done():
 		
 		var line := iterator.next()
 		var predicate_result: bool = fn.callv([line])
 		if predicate_result:
-			return Option.some(line)
+			return MMOption.some(line)
 		
-	return Option.none()
+	return MMOption.none()
 	

@@ -20,13 +20,13 @@ static func to_json_text(obj: {type}) -> String:
 
 
 static func to_json(obj: {type}) -> Dictionary:
-	var result := {}
+	var MMResult := {}
 {primitive_conversions}
 {simple_conversions}
 {simple_array_conversions}
 {serde_conversions}
 {serde_array_conversions}
-	return result
+	return MMResult
 """.strip_edges()
 
 func _get_field_conversion_factory(field_data: MMObjectTokensFieldData) -> MMSerdeFieldConversionFactory:

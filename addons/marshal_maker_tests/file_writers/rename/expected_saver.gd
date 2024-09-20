@@ -14,11 +14,11 @@ static func to_json_text(obj: _MMFileWriterTestRenameObject) -> String:
 
 
 static func to_json(obj: _MMFileWriterTestRenameObject) -> Dictionary:
-	var result := {}
-	result["renamedExportVar"] = obj.renamed_export_var
-	result["renamedVar"] = obj.renamed_var
-	result["RenamedArray"] = []
+	var MMResult := {}
+	MMResult["renamedExportVar"] = obj.renamed_export_var
+	MMResult["renamedVar"] = obj.renamed_var
+	MMResult["RenamedArray"] = []
 	for item in obj.renamed_array:
 		var saved_item := MMConversions.vector2_to_dict(item)
-		result["RenamedArray"].append(saved_item)
-	return result
+		MMResult["RenamedArray"].append(saved_item)
+	return MMResult

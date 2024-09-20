@@ -14,21 +14,21 @@ static func to_json_text(obj: _MMFileWriterTestPrimitiveObject) -> String:
 
 
 static func to_json(obj: _MMFileWriterTestPrimitiveObject) -> Dictionary:
-	var result := {}
-	result["specified_string"] = obj.specified_string
-	result["inferred_single_double_string"] = obj.inferred_single_double_string
-	result["inferred_single_single_string"] = obj.inferred_single_single_string
-	result["inferred_triple_double_string"] = obj.inferred_triple_double_string
-	result["inferred_triple_single_string"] = obj.inferred_triple_single_string
-	result["inferred_raw_single_double_string"] = obj.inferred_raw_single_double_string
-	result["inferred_raw_single_single_string"] = obj.inferred_raw_single_single_string
-	result["inferred_raw_triple_double_string"] = obj.inferred_raw_triple_double_string
-	result["inferred_raw_triple_single_string"] = obj.inferred_raw_triple_single_string
-	result["specified_float"] = obj.specified_float
-	result["inferred_float"] = obj.inferred_float
-	result["specified_int"] = obj.specified_int
-	result["inferred_int"] = obj.inferred_int
-	result["inferred_int_with_underscore"] = obj.inferred_int_with_underscore
-	result["inferred_binary"] = obj.inferred_binary
-	result["inferred_hex"] = obj.inferred_hex
-	return result
+	var MMResult := {}
+	MMResult["specified_string"] = obj.specified_string
+	MMResult["inferred_single_double_string"] = obj.inferred_single_double_string
+	MMResult["inferred_single_single_string"] = obj.inferred_single_single_string
+	MMResult["inferred_triple_double_string"] = obj.inferred_triple_double_string
+	MMResult["inferred_triple_single_string"] = obj.inferred_triple_single_string
+	MMResult["inferred_raw_single_double_string"] = obj.inferred_raw_single_double_string
+	MMResult["inferred_raw_single_single_string"] = obj.inferred_raw_single_single_string
+	MMResult["inferred_raw_triple_double_string"] = obj.inferred_raw_triple_double_string
+	MMResult["inferred_raw_triple_single_string"] = obj.inferred_raw_triple_single_string
+	MMResult["specified_float"] = obj.specified_float
+	MMResult["inferred_float"] = obj.inferred_float
+	MMResult["specified_int"] = obj.specified_int
+	MMResult["inferred_int"] = obj.inferred_int
+	MMResult["inferred_int_with_underscore"] = obj.inferred_int_with_underscore
+	MMResult["inferred_binary"] = obj.inferred_binary
+	MMResult["inferred_hex"] = obj.inferred_hex
+	return MMResult

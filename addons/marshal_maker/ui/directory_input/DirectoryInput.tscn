@@ -16,6 +16,7 @@ title = "Open a Directory"
 size = Vector2i(303, 180)
 ok_button_text = "Select Current Folder"
 file_mode = 2
+use_native_dialog = true
 
 [node name="H" type="HBoxContainer" parent="."]
 layout_mode = 2

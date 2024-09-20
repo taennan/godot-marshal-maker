@@ -14,7 +14,7 @@ static func to_json_text(obj: _MMFileWriterTestCustomConversionObject) -> String
 
 
 static func to_json(obj: _MMFileWriterTestCustomConversionObject) -> Dictionary:
-	var result := {}
-	result["position"] = MMConversions.vector2_to_array(obj.position)
-	result["scale"] = MMConversions.vector2_to_dict(obj.scale)
-	return result
+	var MMResult := {}
+	MMResult["position"] = MMConversions.vector2_to_array(obj.position)
+	MMResult["scale"] = MMConversions.vector2_to_dict(obj.scale)
+	return MMResult
